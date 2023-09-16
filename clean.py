@@ -2,34 +2,33 @@ from tkinter import *
 import tkinter as tk
 
 
-class RatingButtons(tk.Frame):
-    pass
+class RatingUI(tk.Frame):
+    def __init__(self, parent, *args, **kwargs):
+        tk.Frame.__init__(self, parent, *args, **kwargs)
+        self.parent = parent
 
 
-def button_clicked(rating):
-    return
-
-
-def create_rating_buttons(number_of_buttons, tk_window):
-    for i in range(number_of_buttons):
-        btn = tk.Button(tk_window, text=str(i), command=button_clicked(i))
-        btn.pack()
+class AverageRating(tk.Frame):
+    def __init__(self, parent, *args, **kwargs):
+        tk.Frame.__init__(self, parent, *args, **kwargs)
+        self.parent = parent
 
 
 class Application(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
+        self.ratings_ui = RatingUI(self, ...)
+
+        self.ratings_ui.pack(fill="x")
 
 
 if __name__ == "__main__":
     root = tk.Tk()
+    Application(root).pack(expand=True)
+    root.mainloop()
 
 cleanliness_average = 0
 
-window = tk.Tk()
-
 main_title_str = "Rate the cleanliness of this bus:"
 cleanliness_average_str = "This bus has an average cleanliness rating of {}"
-
-window.mainloop()
