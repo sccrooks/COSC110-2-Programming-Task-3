@@ -8,11 +8,33 @@ class RatingUI(tk.Frame):
         self.parent = parent
 
 
+class Rating:
+    def __init__(self):
+        self.num_of_ratings = 0
+        self.totalRatings = 0
+
+    def add_ratings(self, rating):
+        self.totalRatings += rating
+        self.num_of_ratings += 1
+
+    def get_average_rating(self):
+        return self.totalRatings / self.num_of_ratings
+
+    def get_num_of_ratings(self):
+        return self.num_of_ratings
+
+
 class AverageRating(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
+
+        global cleanliness_rating
         self.cleanliness_average_str = "This bus has an average cleanliness rating of {}"
+
+        if cleanliness_rating.get_num_of_ratings() > 0:
+            lbl = tk.Label(text=self.cleanliness_average_str.format(cleanliness_rating.get_average_rating()))
+            lbl.pack()
 
 
 class Application(tk.Frame):
@@ -29,7 +51,7 @@ class Application(tk.Frame):
         self.average_rating.pack()
 
 
-cleanliness_average = 0
+cleanliness_rating = Rating()
 
 if __name__ == "__main__":
     root = tk.Tk()
