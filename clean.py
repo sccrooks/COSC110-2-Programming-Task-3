@@ -2,12 +2,6 @@ from tkinter import *
 import tkinter as tk
 
 
-class RatingUI(tk.Frame):
-    def __init__(self, parent, *args, **kwargs):
-        tk.Frame.__init__(self, parent, *args, **kwargs)
-        self.parent = parent
-
-
 class Rating:
     def __init__(self):
         self.num_of_ratings = 0
@@ -22,6 +16,17 @@ class Rating:
 
     def get_num_of_ratings(self):
         return self.num_of_ratings
+
+
+class RatingUI(tk.Frame):
+    def __init__(self, parent, *args, **kwargs):
+        tk.Frame.__init__(self, parent, *args, **kwargs)
+        self.parent = parent
+
+        global cleanliness_rating
+
+        btn = Button(self, text="1", command=lambda: cleanliness_rating.add_ratings(5))
+        btn.pack()
 
 
 class AverageRating(tk.Frame):
@@ -57,7 +62,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     Application(root).pack(expand=True)
     root.mainloop()
-
-
-
-
