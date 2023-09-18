@@ -10,6 +10,7 @@ class Rating:
     def add_ratings(self, rating):
         self.totalRatings += rating
         self.num_of_ratings += 1
+        print(str(self.totalRatings) + "NoR:" + str(self.num_of_ratings))
 
     def get_average_rating(self):
         return self.totalRatings / self.num_of_ratings
@@ -25,8 +26,9 @@ class RatingUI(tk.Frame):
 
         global cleanliness_rating
 
-        btn = Button(self, text="1", command=lambda: cleanliness_rating.add_ratings(5))
-        btn.pack()
+        for i in range(1, 5):
+            rating_button = Button(self, text=str(i), command=lambda: cleanliness_rating.add_ratings(i))
+            rating_button.pack()
 
 
 class AverageRating(tk.Frame):
