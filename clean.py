@@ -24,11 +24,14 @@ class RatingUI(tk.Frame):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
 
-        global cleanliness_rating
-
-        for i in range(1, 5):
-            rating_button = Button(self, text=str(i), command=lambda: cleanliness_rating.add_ratings(i))
+        for i in range(1, 6):
+            rating_button = Button(self, text=str(i), command=lambda k=i: self.add_rating(k))
             rating_button.pack()
+
+    def add_rating(self, value):
+        global cleanliness_rating
+        cleanliness_rating.add_ratings(value)
+        Tk.update(self)
 
 
 class AverageRating(tk.Frame):
