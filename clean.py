@@ -42,7 +42,6 @@ class AverageRating(tk.Frame):
         global cleanliness_rating
         self.cleanliness_average_str = "This bus has an average cleanliness rating of {}"
 
-
         if cleanliness_rating.get_num_of_ratings() > 0:
             lbl = tk.Label(text=self.cleanliness_average_str.format(cleanliness_rating.get_average_rating()))
             lbl.pack()
