@@ -26,7 +26,7 @@ class RatingUI(tk.Frame):
 
         for i in range(1, 6):
             rating_button = Button(self, text=str(i), command=lambda k=i: self.add_rating(k))
-            rating_button.pack()
+            rating_button.grid(row=0, column=i)
 
     def add_rating(self, value):
         global cleanliness_rating
@@ -41,9 +41,10 @@ class AverageRating(tk.Frame):
 
         global cleanliness_rating
         self.cleanliness_average_str = "This bus has an average cleanliness rating of {}"
+        lbl = tk.Label(text="")
 
         if cleanliness_rating.get_num_of_ratings() > 0:
-            lbl = tk.Label(text=self.cleanliness_average_str.format(cleanliness_rating.get_average_rating()))
+            lbl.config(text=self.cleanliness_average_str.format(cleanliness_rating.get_average_rating()))
             lbl.pack()
 
 
@@ -51,19 +52,18 @@ class Application(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
+        self.create_widgets()
 
-        self.greeting = tk.Label(text="Rate the cleanliness of this bus:")
-        self.ratings_ui = RatingUI(self)
-        self.average_rating = AverageRating(self)
-
-        self.greeting.pack()
-        self.ratings_ui.pack(fill="x")
-        self.average_rating.pack()
+    def create_widgets(self):
+        tk.Label(text="Rate the cleanliness of this bus:").pack(fill="x")
+        RatingUI(self).pack(fill="x")
+        AverageRating(self).pack(fill="x")
 
 
 cleanliness_rating = Rating()
 
 if __name__ == "__main__":
     root = tk.Tk()
+    root.title("Bus Cleanliness App")
     Application(root).pack(expand=True)
     root.mainloop()
