@@ -7,16 +7,21 @@ class RatingSystem:
         self.number_of_ratings = 0
         self.average_rating = self.calculate_average()
 
-    def add_rating(self, value):
+    def add_rating(self, value: float) -> None:
         """
-
-        :param value:
+        add_rating adds a new rating to the rating system
+        :param value: Value of new rating
         """
         self.total_ratings += value
         self.number_of_ratings += 1
         self.average_rating = self.calculate_average()
 
-    def calculate_average(self):
+    def calculate_average(self) -> float:
+        """
+        calculate_average calculates the average of the total ratings added into
+        the rating system.
+        :return: average rating (float)
+        """
         return self.total_ratings / self.number_of_ratings
 
 class RatingUI(tk.Frame):
