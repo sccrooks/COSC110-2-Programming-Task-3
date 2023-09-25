@@ -49,12 +49,21 @@ class AverageRating(tk.Frame):
 
 
 class Application(tk.Frame):
+    """
+    Core tk.Frame for this application.
+
+    Attributes:
+        parent: Parent of this tk.Frame
+    """
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
         self.create_widgets()
 
     def create_widgets(self):
+        """
+        Inits Application widgets
+        """
         tk.Label(text="Rate the cleanliness of this bus:").pack(fill="x")
         RatingUI(self).pack(fill="x")
         AverageRating(self).pack(fill="x")
