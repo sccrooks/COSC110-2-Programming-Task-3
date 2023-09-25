@@ -12,8 +12,6 @@ class RatingUI(tk.Frame):
             rating_button.grid(row=0, column=i)
 
     def add_rating(self, value):
-        global cleanliness_rating
-        cleanliness_rating.add_ratings(value)
         Tk.update(self)
 
 
@@ -40,6 +38,8 @@ class Application(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
+        self.total_rating = 0
+
         self.create_widgets()
 
     def create_widgets(self):
@@ -49,6 +49,10 @@ class Application(tk.Frame):
         tk.Label(text="Rate the cleanliness of this bus:").pack(fill="x")
         RatingUI(self).pack(fill="x")
         AverageRating(self, 0).pack(fill="x")
+
+    def add_rating(self, value):
+
+
 
 
 if __name__ == "__main__":
