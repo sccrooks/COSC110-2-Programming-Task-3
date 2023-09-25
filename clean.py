@@ -55,19 +55,6 @@ class RatingUI(tk.Frame):
             rating_button = Button(self, text=str(i), command=lambda k=i: self.parent.add_rating(k))
             rating_button.grid(row=0, column=i)
 
-
-class AverageRating(tk.Frame):
-    def __init__(self, parent, average_rating, *args, **kwargs):
-        tk.Frame.__init__(self, parent, *args, **kwargs)
-        self.average_rating = average_rating
-        self.parent = parent
-
-        self.cleanliness_average_str = "This bus has an average cleanliness rating of {}"
-        lbl = tk.Label(text="")
-        lbl.config(text="ww")
-        lbl.pack()
-
-
 class Application(tk.Frame):
     """
     Core tk.Frame for this application.
