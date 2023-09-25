@@ -53,8 +53,8 @@ class RatingUI(tk.Frame):
         create_buttons creates the buttons for this widget.
         """
         for i in range(1, 6):
-            rating_button = Button(self, text=str(i), command=lambda k=i: self.parent.add_rating(k))
-            rating_button.grid(row=0, column=i)
+            rating_button = Button(self, text=str(i), command=lambda k=i: self.parent.add_rating(k), width=10)
+            rating_button.grid(row=0, column=i, padx=2)
 
 
 class Application(tk.Frame):
@@ -83,13 +83,17 @@ class Application(tk.Frame):
 
     def create_rating_label_string(self) -> str:
         """
-        Creates
+        Creates and formats the average rating label string.
         :return: Average rating string
         """
         avg_rating = round(self.ratings.average_rating, 2)
         return "This bus has an average cleanliness rating of {}".format(avg_rating)
 
-    def add_rating(self, value):
+    def add_rating(self, value: float) -> None:
+        """
+        Adds a new rating to the rating system AND updates average_rating_label.
+        :param value: Value of new rating
+        """
         self.ratings.add_rating(value)
         self.average_rating_label.config(text=self.create_rating_label_string())
 
