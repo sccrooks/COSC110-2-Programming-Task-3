@@ -1,6 +1,23 @@
 from tkinter import *
 import tkinter as tk
 
+class RatingSystem:
+    def __init__(self):
+        self.total_ratings = 0
+        self.number_of_ratings = 0
+        self.average_rating = self.calculate_average()
+
+    def add_rating(self, value):
+        """
+
+        :param value:
+        """
+        self.total_ratings += value
+        self.number_of_ratings += 1
+        self.average_rating = self.calculate_average()
+
+    def calculate_average(self):
+        return self.total_ratings / self.number_of_ratings
 
 class RatingUI(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
