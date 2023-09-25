@@ -42,6 +42,7 @@ class RatingUI(tk.Frame):
     Attributes:
         parent: parent of this tk.Frame.
     """
+
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
@@ -55,6 +56,7 @@ class RatingUI(tk.Frame):
             rating_button = Button(self, text=str(i), command=lambda k=i: self.parent.add_rating(k))
             rating_button.grid(row=0, column=i)
 
+
 class Application(tk.Frame):
     """
     Core tk.Frame for this application.
@@ -67,19 +69,29 @@ class Application(tk.Frame):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
         self.ratings = RatingSystem()
-
+        self.average_rating_label = Label(text="")
         self.create_widgets()
 
-    def create_widgets(self):
+    def create_widgets(self) -> None:
         """
         Inits Application widgets
         """
         tk.Label(text="Rate the cleanliness of this bus:").pack(fill="x")
         RatingUI(self).pack(fill="x")
-        AverageRating(self, 0).pack(fill="x")
+        self.average_rating_label.config(text=self.create_rating_label_string())
+        self.average_rating_label.pack(fill="x")
+
+    def create_rating_label_string(self) -> str:
+        """
+        Creates
+        :return: Average rating string
+        """
+        avg_rating = round(self.ratings.average_rating, 2)
+        return "This bus has an average cleanliness rating of {}".format(avg_rating)
 
     def add_rating(self, value):
         self.ratings.add_rating(value)
+        self.average_rating_label.config(text=self.create_rating_label_string())
 
 
 if __name__ == "__main__":
