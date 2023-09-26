@@ -1,3 +1,11 @@
+#
+#   Author: Scott Crooks
+#
+#   Purpose: Application for recording and displaying the cleanliness ratings for a bus.
+#
+#   Usage: To use, run this file / see readme.md
+#
+
 from tkinter import *
 import tkinter as tk
 
