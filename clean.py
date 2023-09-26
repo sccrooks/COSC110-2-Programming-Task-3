@@ -97,14 +97,14 @@ class Application(tk.Frame):
         self.rating_system = RatingSystem()
 
         # Widgets
-        self.greetings = tk.Label(text="Rate the cleanliness of this bus:")
+        self.greetings = tk.Label(self, text="Rate the cleanliness of this bus:")
         self.rating_widget = RatingWidget(self)
         self.average_rating_widget = AverageRatingWidget(self)
 
         # Packing
-        self.greetings.pack(fill="x")
-        self.rating_widget.pack(fill="x")
-        self.average_rating_widget.pack(fill="x")
+        self.greetings.pack(fill="x", anchor=CENTER)
+        self.rating_widget.pack(fill="x", anchor=CENTER)
+        self.average_rating_widget.pack(fill="x", anchor=CENTER)
 
     def add_rating(self, value: float) -> None:
         """
