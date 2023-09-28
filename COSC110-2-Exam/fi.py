@@ -38,10 +38,11 @@ def main():
     print("Year\tRemaining Balance")
     for i in range(years):
 
-        savings -= lifestyle_spend
-
         # Calc lifestyle spending rate:
         lifestyle_spend += lifestyle_spend * inflation_rate
+
+        # Calculate savings
+        savings -= lifestyle_spend
 
         # Calc interest on savings:
         savings += savings * interest_rate
