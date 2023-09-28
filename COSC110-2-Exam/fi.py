@@ -23,7 +23,12 @@ def request_float_input(message: str, minimum: float = None, maximum: float = No
             print("Invalid input. Please enter an integer")
 
 
+def calc_savings():
+    pass
+
+
 def main():
+    # Request inputs from user
     lifestyle_spend = request_float_input("How much did you spend last year to maintain your current lifestyle? ", 0)
     inflation_rate = request_float_input("Please enter the expected inflation rate: ")
     savings = request_float_input("How much do you current have saved? ", 0)
@@ -31,7 +36,15 @@ def main():
     years = int(request_float_input("How many years do you want to test?"))
 
     print("Year\tRemaining Balance")
+    for i in range(years):
+        calc_savings()
+        str_format = "{}\t{}"
+        print(str_format.format((i, savings)))
 
+    if savings < 0:
+        print("Not financially independent")
+    else:
+        print("Not financially dependent")
 
 
 if __name__ == "__main__":
