@@ -23,6 +23,31 @@ def request_float_input(message: str, minimum: float = None, maximum: float = No
             print("Invalid input. Please enter an integer")
 
 
+def request_int_input(message: str, minimum: int = None, maximum: int = None) -> int:
+    """
+    get_int_input requests an integer input from the
+    user of a minimum value, specified by minimum. And a maximum value
+    which is specified by maximum.
+
+    :param message: The message presented to the user
+    :param minimum: Minimum allowed input
+    :param maximum: Maximum allowed input
+    :return: int
+    """
+    while True:
+        try:
+            input_num = int(input(message))
+
+            if minimum is not None and input_num < minimum:
+                print("Invalid input. Please enter an integer of at least " + str(minimum) + ".")
+            elif maximum is not None and input_num > maximum:
+                print("Invalid input. Please enter an integer of at least " + str(maximum) + ".")
+            else:
+                return input_num
+        except:
+            print("Invalid input. Please enter an integer")
+
+
 def calc_savings():
     pass
 
@@ -37,7 +62,6 @@ def main():
 
     print("Year\tRemaining Balance")
     for i in range(years):
-
         # Calc lifestyle spending rate:
         lifestyle_spend += lifestyle_spend * inflation_rate
 
@@ -47,8 +71,8 @@ def main():
         # Calc interest on savings:
         savings += savings * interest_rate
 
-        str_format = "{}\t\t{}"
-        print(str_format.format(str(i+1), savings))
+        str_format = "{}     \t{}"
+        print(str_format.format(str(i + 1), savings))
 
     if savings < 0:
         print("Not financially independent")
