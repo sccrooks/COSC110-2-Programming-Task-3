@@ -33,18 +33,26 @@ def main():
     inflation_rate = request_float_input("Please enter the expected inflation rate: ")
     savings = request_float_input("How much do you current have saved? ", 0)
     interest_rate = request_float_input("What is the expected annual interest rate? ")
-    years = int(request_float_input("How many years do you want to test?"))
+    years = int(request_float_input("How many years do you want to test?", 1))
 
     print("Year\tRemaining Balance")
     for i in range(years):
-        calc_savings()
+
+        savings -= lifestyle_spend
+
+        # Calc lifestyle spending rate:
+        lifestyle_spend += lifestyle_spend * inflation_rate
+
+        # Calc interest on savings:
+        savings += savings * interest_rate
+
         str_format = "{}\t\t{}"
         print(str_format.format(str(i+1), savings))
 
     if savings < 0:
         print("Not financially independent")
     else:
-        print("Not financially dependent")
+        print("Financially dependent")
 
 
 if __name__ == "__main__":
