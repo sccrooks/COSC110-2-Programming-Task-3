@@ -38,8 +38,8 @@ def main():
     print("Year\tRemaining Balance")
     for i in range(years):
         calc_savings()
-        str_format = "{}\t{}"
-        print(str_format.format((i, savings)))
+        str_format = "{}\t\t{}"
+        print(str_format.format(str(i+1), savings))
 
     if savings < 0:
         print("Not financially independent")
