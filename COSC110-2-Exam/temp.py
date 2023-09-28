@@ -1,19 +1,16 @@
-def get_number(prompt, error="Please enter a valid number"):
-    """
-      Presents the given prompt to the user and reads in a number.
-      If an invalid value is entered the given error message
-      is displayed and the process repeats.
+def mystery(num1, num2):
+  print("n1: " + str(num1))
+  print("n2: " + str(num2))
 
-      Arguments:
-      prompt -- The prompt to display to the user
-      error -- The error to display if an invalid value is entered
-               Defaults to "Please enter a valid number"
+  if num1 == num2:
+    return num1
+  if num1 > num2:
+    return mystery(num2, num1)
+  if num2 % 5 == num1 % 5:
+    return mystery(num1, num2//2)
 
-      Returns the number entered by the user (as a float)
-    """
-    while True:
-        value_string = input(prompt)
-        try:
-            return float(value_string)
-        except ValueError:
-            print(error)
+  
+  return mystery(num1, num2 + 1)
+
+value = mystery(8, 5)
+print(value)
