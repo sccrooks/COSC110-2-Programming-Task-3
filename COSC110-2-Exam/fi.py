@@ -24,7 +24,14 @@ def request_float_input(message: str, minimum: float = None, maximum: float = No
 
 
 def main():
-    pass
+    lifestyle_spend = request_float_input("How much did you spend last year to maintain your current lifestyle? ", 0)
+    inflation_rate = request_float_input("Please enter the expected inflation rate: ")
+    savings = request_float_input("How much do you current have saved? ", 0)
+    interest_rate = request_float_input("What is the expected annual interest rate? ")
+    years = int(request_float_input("How many years do you want to test?"))
+
+    print("Year\tRemaining Balance")
+
 
 
 if __name__ == "__main__":
